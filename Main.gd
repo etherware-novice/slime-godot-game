@@ -9,21 +9,15 @@ signal do_attack(target_pos)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$transition.start()
 	$Camera2D.make_current()
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_transition_timeout():
-	var attack_pos = $icecream.position
-	attack_pos.x -= 100
-	emit_signal("do_attack", attack_pos)
-	pass # Replace with function body.
+func _process(delta):
+	if Input.is_action_pressed("ui_right"):
+		var attack_pos = $icecream.position
+		attack_pos.x -= 100
+		emit_signal("do_attack", attack_pos)
 
 func screen_shake():
 	var orig = $Camera2D.position
@@ -42,5 +36,5 @@ func screen_shake():
 		
 
 
-func _on_beanie_attack():
+func _on_beanie_attack(dmg):
 	screen_shake()

@@ -10,11 +10,13 @@ https://user-images.githubusercontent.com/73374039/216545408-5e6a37e0-6a21-4f0d-
 TODO:
 - [x] Dealing damage
 - [x] Implementing game over
-- [ ] Damage numbers / HP bar
+- [x] HP bar
+- [ ] Damage numbers
 - [ ] Turns system
 	- [ ] Implementing missing hurt/atk sprites
 	- [ ] Some form of turn control
 	- [ ] Enemy attack system
+    - [ ] Implementing game over
 - [ ] Choosing attacks
 - [ ] Multiple party members
 - [ ] Action commands
