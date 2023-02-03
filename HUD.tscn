@@ -121,3 +121,6 @@ frame = 2
 
 [node name="despawn" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="despawn" to="." method="_on_despawn_timeout"]

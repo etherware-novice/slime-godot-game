@@ -7,7 +7,8 @@ https://user-images.githubusercontent.com/73374039/216513379-bf9932d5-8749-473b-
 
 TODO:
 - [x] Dealing damage
-- [ ] Damage numbers / HP bar
+- [x] HP bar
+- [ ] Damage numbers
 - [ ] Turns system
 	- [ ] Implementing missing hurt/atk sprites
 	- [ ] Some form of turn control

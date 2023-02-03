@@ -21,8 +21,8 @@ func _ready():
 
 func _on_beanie_attack(dmg):
 	$AnimatedSprite.animation = "hurt"
-	yield($AnimatedSprite, "animation_finished")
 	_sub_hp(dmg)
+	yield($AnimatedSprite, "animation_finished")
 	if(hp < 0):
 		queue_free()
 	$AnimatedSprite.animation = "idle"

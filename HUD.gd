@@ -23,9 +23,11 @@ func _on_icecream_hp_update(new_hp, max_hp, pos):
 	var newbar = $e_hpbar.duplicate(0)
 	newbar.visible = true
 	newbar.frame = int(sections)
-	newbar.position = pos
-	newbar.position.y += 50
+	newbar.position = pos + Vector2(280, 240)
 	newbar.show()
+	add_child(newbar)
 	print(newbar.position)
 	print(sections)
-
+	$despawn.start()
+	yield($despawn, "timeout")
+	newbar.queue_free()
