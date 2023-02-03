@@ -3,11 +3,13 @@ first game - rpg
 
 current progress:
 
-https://user-images.githubusercontent.com/73374039/216513379-bf9932d5-8749-473b-9e88-01d84db8711e.mp4
+https://user-images.githubusercontent.com/73374039/216545408-5e6a37e0-6a21-4f0d-b308-2a1c04202005.mp4
+
+
 
 TODO:
-- [ ] Dealing damage
-- [ ] Implementing game over
+- [x] Dealing damage
+- [x] Implementing game over
 - [ ] Damage numbers / HP bar
 - [ ] Turns system
 	- [ ] Implementing missing hurt/atk sprites
