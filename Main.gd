@@ -36,5 +36,5 @@ func screen_shake():
 		
 
 
-func _on_beanie_attack():
+func _on_beanie_attack(dmg):
 	screen_shake()

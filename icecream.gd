@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal hp_update(new_hp, max_hp, pos)
+
 var maxhp = 30
 var hp
 # Declare member variables here. Examples:
@@ -20,7 +22,15 @@ func _ready():
 func _on_beanie_attack(dmg):
 	$AnimatedSprite.animation = "hurt"
 	yield($AnimatedSprite, "animation_finished")
-	hp = hp - dmg
+	_sub_hp(dmg)
 	if(hp < 0):
 		queue_free()
 	$AnimatedSprite.animation = "idle"
+
+
+func _update_hp(new_hp):
+	hp = new_hp
+	emit_signal("hp_update", hp, maxhp, position)
+
+func _sub_hp(damage):
+	_update_hp(hp - damage)

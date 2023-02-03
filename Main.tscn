@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://beanie.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://icecream.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -19,6 +20,9 @@ position = Vector2( 236, 107 )
 [node name="shake" type="Timer" parent="Camera2D"]
 wait_time = 0.1
 
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
 [connection signal="do_attack" from="." to="beanie" method="_on_Main_do_attack"]
 [connection signal="attack" from="beanie" to="." method="_on_beanie_attack"]
 [connection signal="attack" from="beanie" to="icecream" method="_on_beanie_attack"]
+[connection signal="hp_update" from="icecream" to="HUD" method="_on_icecream_hp_update"]
