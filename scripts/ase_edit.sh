@@ -42,5 +42,5 @@ fi
 cp -vn $reference "$newfile"
 aseprite "$newfile"
 
-#aseprite -bv $newfile --scale 5 --save-as "/tmp/$1_$2.gif" && echo Saved gif to /tmp.
+aseprite -bv $newfile --scale 5 --save-as "/tmp/$1_$2.gif" && echo Saved gif to /tmp.
 aseprite -bv $newfile --sheet-type horizontal --sheet "$filebase/$exportfolder/$1_$2.png" && echo Saved spritesheet to $filebase/$exportfolder
