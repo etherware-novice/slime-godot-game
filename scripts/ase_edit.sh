@@ -9,6 +9,7 @@
 # referenced from the scripts location up one folder
 storage=raw
 exportfolder=art
+empty=empty
 
 usage() {
 	>&2 echo Usage: [ basename ] [ stateedited ] [ OPTIONAL: copiedfrom ]
@@ -35,12 +36,15 @@ fi
 
 if [ ! -e "$reference" ]
 then
-	>&2 echo ERROR: Base reference does not exist
-	exit 2
+	>&2 echo WARNING: Base reference does not exist, creating..
+	template=$(find $filebase/$empty -name '*.aseprite' | fzf --prompt='size >')
+	[ -z "$template" ] && exit 2
+	cp -v $template $reference
+	aseprite $reference
 fi
 
 cp -vn $reference "$newfile"
 aseprite "$newfile"
 
 aseprite -bv $newfile --scale 5 --save-as "/tmp/$1_$2.gif" && echo Saved gif to /tmp.
-aseprite -bv $newfile --sheet-type horizontal --sheet "$filebase/$exportfolder/$1_$2.png" && echo Saved spritesheet to $filebase/$exportfolder
+aseprite -bv $newfile --sheet-type horizontal --sheet "$filebase/$exportfolder/$1_$2.png" > /dev/null && echo Saved spritesheet to $filebase/$exportfolder
