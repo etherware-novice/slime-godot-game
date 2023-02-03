@@ -20,12 +20,17 @@ func _ready():
 
 
 func _on_beanie_attack(dmg):
-	$AnimatedSprite.animation = "hurt"
 	_sub_hp(dmg)
-	yield($AnimatedSprite, "animation_finished")
-	if(hp < 0):
+	if(hp > 0):
+		$AnimatedSprite.animation = "hurt"
+		yield($AnimatedSprite, "animation_finished")
+		$AnimatedSprite.animation = "idle"
+	else:
+		$AnimatedSprite.animation = "death"
+		yield($AnimatedSprite, "animation_finished")
+		$AnimatedSprite.animation = "deathhold"
+		yield(get_tree().create_timer(5.0), "timeout")
 		queue_free()
-	$AnimatedSprite.animation = "idle"
 
 
 func _update_hp(new_hp):
