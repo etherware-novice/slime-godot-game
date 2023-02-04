@@ -36,9 +36,16 @@ func _on_icecream_hp_update(new_hp, max_hp, pos):
 	yield($despawn, "timeout")
 	newbar.queue_free()
 
-
-func _on_icecream_damage_num(damage, pos):
+func new_damage_num(damage, pos):
 	var damage_instance = damage_num.instance()
 	add_child(damage_instance)
 	damage_instance.update_number(damage, pos)
 	pass # Replace with function body.
+	
+func _on_icecream_damage_num(damage, pos):
+	new_damage_num(damage, pos)
+
+
+
+func _on_beanie_damage_num(damage, pos):
+	new_damage_num(damage, pos)

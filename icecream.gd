@@ -4,6 +4,8 @@ signal hp_update(new_hp, max_hp, pos)
 signal damage_num(damage, position)
 signal endturn
 
+signal attack(dmg)
+
 var maxhp = 30
 var hp
 
@@ -73,6 +75,7 @@ func do_attack(bar):
 	$AnimatedSprite.animation = "idle"
 	
 	get_node("/root/Main").screen_shake()
+	emit_signal("attack", 5)
 	position = ini
 	
 	emit_signal("endturn")
