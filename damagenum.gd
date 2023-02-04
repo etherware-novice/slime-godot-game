@@ -21,7 +21,7 @@ func update_number(number, position):
 	print("update_num")
 	print(position)
 
-	var numoffset = position + Vector2(-100, 0)
+	var numoffset = position
 	for x in str(number):
 		var nsprite = $AnimatedSprite.duplicate()
 		nsprite.visible = true
