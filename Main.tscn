@@ -25,4 +25,5 @@ wait_time = 0.1
 [connection signal="do_attack" from="." to="beanie" method="_on_Main_do_attack"]
 [connection signal="attack" from="beanie" to="." method="_on_beanie_attack"]
 [connection signal="attack" from="beanie" to="icecream" method="_on_beanie_attack"]
+[connection signal="damage_num" from="icecream" to="HUD" method="_on_icecream_damage_num"]
 [connection signal="hp_update" from="icecream" to="HUD" method="_on_icecream_hp_update"]
