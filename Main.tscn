@@ -11,7 +11,7 @@ script = ExtResource( 2 )
 [node name="beanie" parent="." instance=ExtResource( 1 )]
 position = Vector2( 79, 114 )
 
-[node name="icecream" parent="." instance=ExtResource( 3 )]
+[node name="icecream" parent="." groups=["enemies"] instance=ExtResource( 3 )]
 position = Vector2( 426, 172 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -22,8 +22,9 @@ wait_time = 0.1
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
-[connection signal="do_attack" from="." to="beanie" method="_on_Main_do_attack"]
 [connection signal="attack" from="beanie" to="." method="_on_beanie_attack"]
 [connection signal="attack" from="beanie" to="icecream" method="_on_beanie_attack"]
+[connection signal="endturn" from="beanie" to="." method="_on_beanie_endturn"]
 [connection signal="damage_num" from="icecream" to="HUD" method="_on_icecream_damage_num"]
+[connection signal="endturn" from="icecream" to="." method="_on_icecream_endturn"]
 [connection signal="hp_update" from="icecream" to="HUD" method="_on_icecream_hp_update"]

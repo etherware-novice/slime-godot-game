@@ -2,22 +2,29 @@ extends Node2D
 
 signal do_attack(target_pos)
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+var turnorder = []
+var turnindex = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Camera2D.make_current()
+	turnorder += [$beanie]
+	turnorder += get_tree().get_nodes_in_group("enemies")
+	next_turn()
+
+
+
+func next_turn():
+	var attack_pos = $icecream.position
+	attack_pos.x -= 100
+	turnorder[turnindex].do_attack(attack_pos)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("ui_right"):
-		var attack_pos = $icecream.position
-		attack_pos.x -= 100
-		emit_signal("do_attack", attack_pos)
+	pass
 
 func screen_shake():
 	var orig = $Camera2D.position
@@ -38,3 +45,18 @@ func screen_shake():
 
 func _on_beanie_attack(dmg):
 	screen_shake()
+
+
+func _endturn():
+	turnindex += 1
+	if turnindex >= turnorder.size():
+		turnindex = 0
+	next_turn()
+
+func _on_beanie_endturn():
+	_endturn()
+	pass # Replace with function body.
+
+func _on_icecream_endturn():
+	_endturn()
+	pass # Replace with function body.
