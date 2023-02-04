@@ -11,6 +11,7 @@ var EASING = Tween.TRANS_QUART
 
 signal attack(damage)
 signal endturn
+signal damage_num(damage, position)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -72,3 +73,8 @@ func do_attack(target_pos):
 	target = target_pos
 	pass # Replace with function body.
 
+
+
+func _on_icecream_attack(dmg):
+	emit_signal("damage_num", 10, position + Vector2(150, 50))
+	pass # Replace with function body.

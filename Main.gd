@@ -17,6 +17,7 @@ func _ready():
 
 
 func next_turn():
+	print("next turn")
 	var attack_pos = $icecream.position
 	attack_pos.x -= 100
 	turnorder[turnindex].do_attack(attack_pos)
@@ -48,6 +49,7 @@ func _on_beanie_attack(dmg):
 
 
 func _endturn():
+	print("end turn")
 	turnindex += 1
 	if turnindex >= turnorder.size():
 		turnindex = 0
@@ -60,3 +62,5 @@ func _on_beanie_endturn():
 func _on_icecream_endturn():
 	_endturn()
 	pass # Replace with function body.
+
+
