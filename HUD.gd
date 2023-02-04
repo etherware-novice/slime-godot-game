@@ -34,7 +34,7 @@ func calculate_hp_bar(hp, maxhp, pos):
 	var newbar = $e_hpbar.duplicate(0)
 	newbar.visible = true
 	newbar.frame = int(sections)
-	newbar.position = pos + Vector2(0, 30)
+	newbar.position = pos + Vector2(0, 50)
 	newbar.show()
 	add_child(newbar)
 	$despawn.start()

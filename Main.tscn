@@ -17,7 +17,7 @@ position = Vector2( 426, 172 )
 
 [node name="BattleCam" type="Camera2D" parent="."]
 unique_name_in_owner = true
-position = Vector2( 389, 205 )
+position = Vector2( 319, 145 )
 script = ExtResource( 5 )
 
 [node name="shake" type="Timer" parent="BattleCam"]
