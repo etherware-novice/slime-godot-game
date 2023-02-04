@@ -7,15 +7,11 @@ extends "res://character.gd"
 #	pass
 
 func _ready():
-	damageoffset = Vector2(-200, -100)
+	#damageoffset = Vector2(-200, -100)
 	._ready()
 
 
-func do_attack():
-	if(not active):
-		emit_signal("end_turn")
-		return
-	
+func do_attack():	
 	var ini = position
 	
 	var player = get_tree().get_nodes_in_group("party").duplicate()
@@ -46,7 +42,7 @@ func do_attack():
 	$AnimatedSprite.animation = "attack_squish"
 	emit_signal("attack", 5)
 	player._sub_hp(5)
-	get_node("%HUD").screen_shake()
+	get_node("%BattleCam").screen_shake()
 	yield($AnimatedSprite, "animation_finished")
 	
 	$AnimatedSprite.animation = "idle"
@@ -58,18 +54,18 @@ func do_attack():
 
 func _sub_hp(damage):
 	._sub_hp(damage)
-	var hud = get_node("%HUD")
-	hud.screen_shake()
-	if(hp > 0):
+	var cam = get_node("%BattleCam").screen_shake()
+	if active:
 		$AnimatedSprite.animation = "hurt"
 		yield($AnimatedSprite, "animation_finished")
 		$AnimatedSprite.animation = "idle"
-	else:
-		$AnimatedSprite.animation = "death"
-		yield($AnimatedSprite, "animation_finished")
-		$AnimatedSprite.animation = "deathhold"
-		yield(get_tree().create_timer(5.0), "timeout")
-		active = false
-		queue_free()
+
+func on_death():
+	.on_death()
+	$AnimatedSprite.animation = "death"
+	yield($AnimatedSprite, "animation_finished")
+	$AnimatedSprite.animation = "deathhold"
+	yield(get_tree().create_timer(5.0), "timeout")
+	queue_free()
 	
 

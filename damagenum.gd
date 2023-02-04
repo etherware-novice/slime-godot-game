@@ -17,9 +17,11 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func update_number(number, position):
+func update_number(number, target):
 	print("update_num")
-	print(position)
+	position = target * 0.5  # w h y
+	position += Vector2(30, 0)
+	print(target)
 
 	var numoffset = position
 	for x in str(number):
@@ -30,34 +32,31 @@ func update_number(number, position):
 		numoffset.x += 30
 		add_child(nsprite)
 		add_to_group("num")
+	print(target)
 	
 	$Timer.start()
 	var peak = position
 	peak += Vector2(30, -10)
 	$Tween.interpolate_property(self, "position",
-		position, peak, 0.4,
+		null, peak, 0.4,
 		Tween.TRANS_QUART, Tween.EASE_IN)
 	$Tween.start()
 	yield($Tween, "tween_completed")
 	
-	
+	peak += Vector2(10, 10)
 	$Tween.interpolate_property(self, "position",
-		peak, peak + Vector2(20, 10), 0.4,
+		null, peak, 0.4,
 		Tween.TRANS_QUART, Tween.EASE_OUT)
 	$Tween.start()
 	yield($Tween, "tween_completed")
 	
 	$Tween.interpolate_property(self, "scale",
-		scale, Vector2(1, -301), 2,
+		null, Vector2(1, -301), 2,
 		Tween.TRANS_QUART, Tween.EASE_IN)
-	$Tween.start()
+	#$Tween.start()
 	
 
 
 func _on_Timer_timeout():
 	get_tree().call_group("num", "queue_free")
 
-
-func _on_HUD_damage_num(damage, pos):
-	print("damage_numm")
-	update_number(damage, pos)

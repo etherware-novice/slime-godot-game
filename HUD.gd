@@ -10,6 +10,7 @@ var damage_num = load("res://damagenum.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 
@@ -25,26 +26,7 @@ func new_damage_num(damage, pos):
 	pass # Replace with function body.
 
 
-func screen_shake():
-	var orig = $Camera2D.position
-	var random = RandomNumberGenerator.new()
-	random.randomize()
-	$Camera2D/shake.start()
-	
-	var i = 0
-	while i < 5:
-		$Camera2D.position += Vector2(random.randi_range(-7, 7), random.randi_range(-7, 7))
-		yield($Camera2D/shake, "timeout")
-		i += 1
-	
-	$Camera2D/shake.stop()
-	$Camera2D.position = orig
-
 func calculate_hp_bar(hp, maxhp, pos):
-	print("calculate_hp_bar")
-	print(hp)
-	print(maxhp)
-	print(pos)
 	var percent = min((float(hp) / float(maxhp) * 20), 19)
 	var sections = round(percent)
 	
@@ -52,9 +34,14 @@ func calculate_hp_bar(hp, maxhp, pos):
 	var newbar = $e_hpbar.duplicate(0)
 	newbar.visible = true
 	newbar.frame = int(sections)
-	newbar.position = pos + Vector2(0, 70)
+	newbar.position = pos + Vector2(0, 30)
 	newbar.show()
 	add_child(newbar)
 	$despawn.start()
 	yield($despawn, "timeout")
 	newbar.queue_free()
+
+func game_over():
+	$transition.visible = true
+	$AnimationPlayer.play("fadeout")
+	pass

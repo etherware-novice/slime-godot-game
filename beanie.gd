@@ -10,8 +10,8 @@ var EASING = Tween.TRANS_QUART
 
 
 func _ready():
-	maxhp = 40
-	damageoffset = Vector2(-20, -50)
+	maxhp = 10
+	#damageoffset = Vector2(-20, -50)
 	._ready()
 
 
@@ -37,7 +37,6 @@ func _process(delta):
 	if not Input.is_action_pressed("ui_right"):
 		return
 	userinput = false
-	print("hello")
 	
 	$Tween.interpolate_property(self, "position",
 		position, target.position + Vector2(-100, 0), 1,
@@ -52,7 +51,7 @@ func _process(delta):
 	yield($AnimatedSprite, "frame_changed")
 	emit_signal("attack", 5)
 	target._sub_hp(5)
-	get_node("%HUD").screen_shake()
+	get_node("%BattleCam").screen_shake()
 	yield($AnimatedSprite, "animation_finished")
 	
 	$Tween.interpolate_property(self, "position",
