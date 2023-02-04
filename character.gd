@@ -8,8 +8,6 @@ signal hp_update(hp, maxhp, position)
 var maxhp = 30
 var hp
 
-var damageoffset = Vector2(0, 0)
-
 var active = true
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +22,7 @@ func _ready():
 func do_attack():
 	emit_signal("endturn")
 
+
 func _update_hp(new_hp):
 	hp = new_hp
 	emit_signal("hp_update", hp, maxhp, position)
@@ -31,6 +30,13 @@ func _update_hp(new_hp):
 func _sub_hp(damage):
 	_update_hp(hp - damage)
 	var hud = get_node("%HUD")
-	hud.new_damage_num(damage, position + damageoffset)
-	hud.calculate_hp_bar(hp, maxhp, position)
+	var pos = get_global_transform_with_canvas().get_origin()
+
+	hud.new_damage_num(damage, pos)
+	hud.calculate_hp_bar(hp, maxhp, pos)
+	if hp <= 0:
+		on_death()
+
+func on_death():
+	active = false
  

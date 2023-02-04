@@ -34,16 +34,19 @@ else
 	reference="${charprefix}_ref.aseprite"
 fi
 
-if [ ! -e "$reference" ]
+if [ ! -e "$newfile" ]
 then
-	>&2 echo WARNING: Base reference does not exist, creating..
-	template=$(find $filebase/$empty -name '*.aseprite' | fzf --prompt='size >')
-	[ -z "$template" ] && exit 2
-	cp -v $template $reference
-	aseprite $reference
+	if [ ! -e "$reference" ] 
+	then
+		>&2 echo WARNING: Base reference does not exist, creating..
+		template=$(find $filebase/$empty -name '*.aseprite' | fzf --prompt='size >')
+		[ -z "$template" ] && exit 2
+		cp -v $template $reference
+		aseprite $reference
+	fi
+	cp -vn $reference "$newfile"
 fi
 
-cp -vn $reference "$newfile"
 aseprite "$newfile"
 
 aseprite -bv $newfile --scale 5 --save-as "/tmp/$1_$2.gif" && echo Saved gif to /tmp.
