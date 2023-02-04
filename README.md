@@ -12,11 +12,11 @@ TODO:
 - [x] Implementing game over
 - [x] HP bar
 - [x] Damage numbers
-- [ ] Turns system
+- [x] Turns system
 	- [x] Implementing missing hurt/atk sprites
 	- [x] Some form of turn control
 	- [x] Enemy attack system
-    - [ ] Implementing game over
+    - [x] Implementing game over
 - [ ] Choosing attacks
 - [ ] Multiple party members
 - [ ] Action commands
