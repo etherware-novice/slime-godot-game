@@ -17,35 +17,44 @@ func _ready():
 func _process(delta):
 		pass
 
-func _on_icecream_hp_update(new_hp, max_hp, pos):
-	print(new_hp)
-	print(max_hp)
-	var percent = min((float(new_hp) / float(max_hp) * 20), 19)
-	var sections = round(percent)
-	
-
-	var newbar = $e_hpbar.duplicate(0)
-	newbar.visible = true
-	newbar.frame = int(sections)
-	newbar.position = pos + Vector2(280, 240)
-	newbar.show()
-	add_child(newbar)
-	print(newbar.position)
-	print(sections)
-	$despawn.start()
-	yield($despawn, "timeout")
-	newbar.queue_free()
 
 func new_damage_num(damage, pos):
 	var damage_instance = damage_num.instance()
 	add_child(damage_instance)
 	damage_instance.update_number(damage, pos)
 	pass # Replace with function body.
+
+
+func screen_shake():
+	var orig = $Camera2D.position
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	$Camera2D/shake.start()
 	
-func _on_icecream_damage_num(damage, pos):
-	new_damage_num(damage, pos)
+	var i = 0
+	while i < 5:
+		$Camera2D.position += Vector2(random.randi_range(-7, 7), random.randi_range(-7, 7))
+		yield($Camera2D/shake, "timeout")
+		i += 1
+	
+	$Camera2D/shake.stop()
+	$Camera2D.position = orig
 
+func calculate_hp_bar(hp, maxhp, pos):
+	print("calculate_hp_bar")
+	print(hp)
+	print(maxhp)
+	print(pos)
+	var percent = min((float(hp) / float(maxhp) * 20), 19)
+	var sections = round(percent)
+	
 
-
-func _on_beanie_damage_num(damage, pos):
-	new_damage_num(damage, pos)
+	var newbar = $e_hpbar.duplicate(0)
+	newbar.visible = true
+	newbar.frame = int(sections)
+	newbar.position = pos + Vector2(0, 70)
+	newbar.show()
+	add_child(newbar)
+	$despawn.start()
+	yield($despawn, "timeout")
+	newbar.queue_free()

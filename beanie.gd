@@ -1,22 +1,19 @@
-extends KinematicBody2D
+extends "res://character.gd"
 
 var speed = 200
 var velocity = Vector2()
-var ini
 var userinput = false
 
 var target  # delete ethis
 
 var EASING = Tween.TRANS_QUART
 
-signal attack(damage)
-signal endturn
-signal damage_num(damage, position)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	ini = position
-#	tween.set_trans(Tween.TRANS_CUBIC)
+	maxhp = 40
+	damageoffset = Vector2(-20, -50)
+	._ready()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +30,8 @@ func _ready():
 #		emit_signal("attack")
 
 func _process(delta):
+	var ini = position
+	
 	if not userinput:
 		return
 	if not Input.is_action_pressed("ui_right"):
@@ -41,7 +40,7 @@ func _process(delta):
 	print("hello")
 	
 	$Tween.interpolate_property(self, "position",
-		position, target, 1,
+		position, target.position + Vector2(-100, 0), 1,
 		EASING, Tween.EASE_IN_OUT)
 	$Tween.start()
 	$AnimatedSprite.animation = "walk"
@@ -52,6 +51,8 @@ func _process(delta):
 	yield($AnimatedSprite, "frame_changed")
 	yield($AnimatedSprite, "frame_changed")
 	emit_signal("attack", 5)
+	target._sub_hp(5)
+	get_node("%HUD").screen_shake()
 	yield($AnimatedSprite, "animation_finished")
 	
 	$Tween.interpolate_property(self, "position",
@@ -68,13 +69,17 @@ func _process(delta):
 	emit_signal("endturn")
 
 
-func do_attack(target_pos):
+func do_attack():
+	var target_pos = get_tree().get_nodes_in_group("enemies").duplicate()
+	target_pos.shuffle()
+	target_pos = target_pos.pop_front()
+	
 	userinput = true
 	target = target_pos
 	pass # Replace with function body.
 
-
-
-func _on_icecream_attack(dmg):
-	emit_signal("damage_num", 10, position + Vector2(150, 50))
-	pass # Replace with function body.
+func _sub_hp(damage):
+	._sub_hp(damage)
+	$AnimatedSprite.animation = "hurt"
+	yield($AnimatedSprite, "animation_finished")
+	$AnimatedSprite.animation = "idle"
