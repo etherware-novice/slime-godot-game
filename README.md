@@ -11,7 +11,7 @@ TODO:
 - [x] Dealing damage
 - [x] Implementing game over
 - [x] HP bar
-- [ ] Damage numbers
+- [x] Damage numbers
 - [ ] Turns system
 	- [ ] Implementing missing hurt/atk sprites
 	- [ ] Some form of turn control

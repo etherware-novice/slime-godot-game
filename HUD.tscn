@@ -122,3 +122,7 @@ frame = 2
 [node name="despawn" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0

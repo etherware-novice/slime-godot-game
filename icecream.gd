@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal hp_update(new_hp, max_hp, pos)
+signal damage_num(damage, position)
 
 var maxhp = 30
 var hp
@@ -39,3 +40,4 @@ func _update_hp(new_hp):
 
 func _sub_hp(damage):
 	_update_hp(hp - damage)
+	emit_signal("damage_num", damage, position)

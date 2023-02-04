@@ -1,8 +1,11 @@
 extends CanvasLayer
 
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+
+var damage_num = load("res://damagenum.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +22,7 @@ func _on_icecream_hp_update(new_hp, max_hp, pos):
 	print(max_hp)
 	var percent = min((float(new_hp) / float(max_hp) * 20), 19)
 	var sections = round(percent)
+	
 
 	var newbar = $e_hpbar.duplicate(0)
 	newbar.visible = true
@@ -31,3 +35,10 @@ func _on_icecream_hp_update(new_hp, max_hp, pos):
 	$despawn.start()
 	yield($despawn, "timeout")
 	newbar.queue_free()
+
+
+func _on_icecream_damage_num(damage, pos):
+	var damage_instance = damage_num.instance()
+	add_child(damage_instance)
+	damage_instance.update_number(damage, pos)
+	pass # Replace with function body.
