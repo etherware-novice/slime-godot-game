@@ -7,7 +7,7 @@ extends "res://character.gd"
 #	pass
 
 func _ready():
-	#damageoffset = Vector2(-200, -100)
+	ui_name = "ICECREAM"
 	._ready()
 
 
@@ -54,7 +54,7 @@ func do_attack():
 
 func _sub_hp(damage):
 	._sub_hp(damage)
-	var cam = get_node("%BattleCam").screen_shake()
+	get_node("%BattleCam").screen_shake()
 	if active:
 		$AnimatedSprite.animation = "hurt"
 		yield($AnimatedSprite, "animation_finished")

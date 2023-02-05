@@ -10,7 +10,8 @@ var EASING = Tween.TRANS_QUART
 
 
 func _ready():
-	maxhp = 10
+	maxhp = 40
+	ui_name = "BEANIE"
 	#damageoffset = Vector2(-20, -50)
 	._ready()
 
@@ -69,6 +70,8 @@ func _process(delta):
 
 
 func do_attack():
+	$"%HUD".start_user_ui(self)
+	return
 	var target_pos = get_tree().get_nodes_in_group("enemies").duplicate()
 	target_pos.shuffle()
 	target_pos = target_pos.pop_front()

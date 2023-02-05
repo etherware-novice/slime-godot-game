@@ -7,6 +7,7 @@ signal hp_update(hp, maxhp, position)
 
 var maxhp = 30
 var hp
+var ui_name = "null"
 
 var active = true
 
@@ -18,6 +19,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func pre_turn():
+	print("preturn")
+	$"%HUD".update_player_hp(health_display_format())
+	if active:
+		do_attack()
 
 func do_attack():
 	emit_signal("endturn")
@@ -34,9 +41,12 @@ func _sub_hp(damage):
 
 	hud.new_damage_num(damage, pos)
 	hud.calculate_hp_bar(hp, maxhp, pos)
+	hud.update_player_hp(health_display_format())
 	if hp <= 0:
 		on_death()
 
 func on_death():
 	active = false
- 
+
+func health_display_format():
+	return ui_name + " " + str(hp) + " / " + str(maxhp)

@@ -14,6 +14,8 @@ func _ready():
 	turnorder += get_tree().get_nodes_in_group("enemies")
 	for x in turnorder:
 		x.connect("endturn", self, "_endturn")
+	
+	$HUD.start_player_hp(turnorder[0].health_display_format())
 	next_turn()
 
 
@@ -29,8 +31,7 @@ func next_turn():
 		return
 	
 	var nextchar = turnorder[turnindex]
-	if nextchar.active:
-		nextchar.do_attack()
+	nextchar.pre_turn()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

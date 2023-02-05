@@ -1,0 +1,266 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://art/ui_buttons.png" type="Texture" id=1]
+[ext_resource path="res://art/ui_playerhpbox.png" type="Texture" id=2]
+[ext_resource path="res://PlayerHP.gd" type="Script" id=3]
+[ext_resource path="res://art/ui_cursor.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Mx437_EagleSpCGA_Alt1-2y.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends AnimatedSprite
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("hp box:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 170, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("hp box:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 349, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("fight:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 383, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("fight:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 484, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("item:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 470, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("item:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 519, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("run:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 560, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("run:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 486, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "popup"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("hp box:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 167, -0.25, 0, 0.25, 0, 170, -0.25, 0, 0.25, 0, 170, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("hp box:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 550, -0.25, 0, 0.25, 0, 349, -0.25, 0, 0.25, 0, 424, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("fight:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 342, -0.25, 0, 0.25, 0, 358, -0.25, 0, 0.25, 0, 350, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("fight:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 660, -0.25, 0, 0.25, 0, 477, -0.25, 0, 0.25, 0, 530, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("item:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 410, -0.25, 0, 0.25, 0, 442, -0.25, 0, 0.25, 0, 424, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("item:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 659, -0.25, 0, 0.25, 0, 420, -0.25, 0, 0.25, 0, 529, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("run:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 478, -0.25, 0, 0.25, 0, 533, -0.25, 0, 0.25, 0, 492, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("run:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 657, -0.25, 0, 0.25, 0, 375, -0.25, 0, 0.25, 0, 528, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+
+[node name="PlayerHP" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="hp box" type="Sprite" parent="."]
+position = Vector2( 170, 349 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="hp box"]
+margin_left = -25.5238
+margin_top = 19.2381
+margin_right = 25.4762
+margin_bottom = 35.2381
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+text = "test"
+
+[node name="fight" type="AnimatedSprite" parent="."]
+position = Vector2( 383, 484 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+offset = Vector2( 0, -3.6129 )
+script = SubResource( 9 )
+
+[node name="item" type="AnimatedSprite" parent="."]
+position = Vector2( 470, 519 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+frame = 1
+offset = Vector2( 0, -3.6129 )
+
+[node name="run" type="AnimatedSprite" parent="."]
+position = Vector2( 560, 486 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+frame = 2
+offset = Vector2( 0, -3.6129 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
+anims/popup = SubResource( 8 )
+
+[node name="selector" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="input_delay" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="input_delay" to="." method="_on_input_delay_timeout"]

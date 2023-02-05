@@ -19,6 +19,12 @@ func _process(delta):
 		pass
 
 
+func start_player_hp(init_label):
+	$PlayerHP.set_up(init_label)
+
+func update_player_hp(new_label):
+	$PlayerHP.update_text(new_label)
+
 func new_damage_num(damage, pos):
 	var damage_instance = damage_num.instance()
 	add_child(damage_instance)
@@ -26,7 +32,7 @@ func new_damage_num(damage, pos):
 	pass # Replace with function body.
 
 
-func calculate_hp_bar(hp, maxhp, pos):
+func calculate_hp_bar(hp, maxhp, pos, delay = 5):
 	var percent = min((float(hp) / float(maxhp) * 20), 19)
 	var sections = round(percent)
 	
@@ -38,10 +44,15 @@ func calculate_hp_bar(hp, maxhp, pos):
 	newbar.show()
 	add_child(newbar)
 	$despawn.start()
-	yield($despawn, "timeout")
+	yield(get_tree().create_timer(delay), "timeout")
+
 	newbar.queue_free()
 
 func game_over():
 	$transition.visible = true
 	$AnimationPlayer.play("fadeout")
 	pass
+
+
+func start_user_ui(player):
+	$PlayerHP.ui_init(player)
