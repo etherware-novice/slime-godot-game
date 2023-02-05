@@ -1,10 +1,4 @@
-extends "res://character.gd"
-
-var speed = 200
-var velocity = Vector2()
-var userinput = false
-
-var target  # delete ethis
+extends "res://player.gd"
 
 var EASING = Tween.TRANS_QUART
 
@@ -63,19 +57,3 @@ func basic_attack(target):
 	emit_signal("endturn")
 
 
-func do_attack():
-	$"%HUD".start_user_ui(self)
-	return
-	var target_pos = get_tree().get_nodes_in_group("enemies").duplicate()
-	target_pos.shuffle()
-	target_pos = target_pos.pop_front()
-	
-	userinput = true
-	target = target_pos
-	pass # Replace with function body.
-
-func _sub_hp(damage):
-	._sub_hp(damage)
-	$AnimatedSprite.animation = "hurt"
-	yield($AnimatedSprite, "animation_finished")
-	$AnimatedSprite.animation = "idle"

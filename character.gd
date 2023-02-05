@@ -41,11 +41,15 @@ func _sub_hp(damage):
 	_update_hp(hp - damage)
 	var hud = get_node("%HUD")
 	var pos = get_global_transform_with_canvas().get_origin()
-
 	hud.new_damage_num(damage, pos)
 	hud.update_player_hp(health_display_format())
 	if hp <= 0:
 		on_death()
+		return
+	$AnimatedSprite.animation = "hurt"
+	yield($AnimatedSprite, "animation_finished")
+	$AnimatedSprite.animation = "idle"
+
 
 func display_hp_bar(delay = null):
 	return $"%HUD".calculate_hp_bar(hp, maxhp, get_global_transform_with_canvas().get_origin(), delay)

@@ -19,6 +19,8 @@ TODO:
     - [x] Implementing game over
 - [x] Choosing attacks
 - [ ] Multiple party members
+- [ ] Special Attacks
+- [ ] Mid battle cutscene/textboxes
 - [ ] Action commands
 - [ ] Items
 - [ ] Running
