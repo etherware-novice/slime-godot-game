@@ -17,6 +17,8 @@ TODO:
 	- [x] Some form of turn control
 	- [x] Enemy attack system
     - [x] Implementing game over
-- [ ] Choosing attacks
+- [x] Choosing attacks
 - [ ] Multiple party members
 - [ ] Action commands
+- [ ] Items
+- [ ] Running
