@@ -53,6 +53,7 @@ func game_over(text):
 	$transition.visible = true
 	if text:
 		$gameover.text = text
+	$PlayerHP.visible = false
 	$AnimationPlayer.play("fadeout")
 	pass
 

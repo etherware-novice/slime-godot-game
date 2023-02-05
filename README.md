@@ -18,7 +18,8 @@ TODO:
 	- [x] Enemy attack system
     - [x] Implementing game over
 - [x] Choosing attacks
-- [ ] Multiple party members
+- [x] Multiple party members
+- [ ] Add bee hurt sprite
 - [ ] Special Attacks
 - [ ] Mid battle cutscene/textboxes
 - [ ] Action commands

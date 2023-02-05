@@ -11,19 +11,6 @@ func _ready():
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	
-#	if target == null:
-#		return
-#	velocity = position.direction_to(target) * speed
-#	if position.distance_to(target) > 2:
-#		velocity = move_and_slide(velocity)
-#		return
-#	
-#	if not attacking:
-#		emit_signal("attack")
-
 func basic_attack(target):
 	var ini = position
 	
