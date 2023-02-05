@@ -15,7 +15,7 @@ var next_input
 var in_sub = null
 
 
-var temp_hp_bar
+var menu_temp = []
 
 
 func _ready():
@@ -57,8 +57,10 @@ func end_turn():
 func top_menu():
 	if player_inst:
 		update_text(player_inst.health_display_format())
-	if temp_hp_bar:
-		temp_hp_bar.queue_free()
+	for x in menu_temp:
+		x.queue_free()
+	menu_temp.clear()
+		
 	in_sub = null
 	selections = default_selections
 	cur_selection = 0
@@ -66,7 +68,6 @@ func top_menu():
 
 func _on_input_delay_timeout():
 	if not player_inst:
-		print("nul")
 		return
 	$selector.visible = true
 	var maximum_index = selections.size() - 1
@@ -96,7 +97,6 @@ func interpret_preview():
 	match in_sub:
 		"fight":
 			update_text(selections[cur_selection].health_display_format())
-			temp_hp_bar = selections[cur_selection].display_hp_bar(null)
 		null:
 			update_text(player_inst.health_display_format())
 
@@ -107,6 +107,8 @@ func interpret_select():
 		match cur_selection:
 			0:
 				selections = get_tree().get_nodes_in_group("enemies").duplicate()  # get list of enemies
+				for x in selections:
+					menu_temp.append(x.display_hp_bar(null))
 				in_sub = "fight"
 				interpret_preview()
 			_:

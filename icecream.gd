@@ -8,6 +8,7 @@ extends "res://character.gd"
 
 func _ready():
 	ui_name = "ICECREAM"
+	maxhp = 10
 	._ready()
 
 
@@ -65,6 +66,8 @@ func on_death():
 	.on_death()
 	$AnimatedSprite.animation = "death"
 	yield($AnimatedSprite, "animation_finished")
+	remove_from_group("enemies")
+	active = false
 	$AnimatedSprite.animation = "deathhold"
 	yield(get_tree().create_timer(5.0), "timeout")
 	queue_free()

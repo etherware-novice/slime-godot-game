@@ -49,8 +49,10 @@ func calculate_hp_bar(hp, maxhp, pos, delay = null):
 	else:
 		return newbar
 
-func game_over():
+func game_over(text):
 	$transition.visible = true
+	if text:
+		$gameover.text = text
 	$AnimationPlayer.play("fadeout")
 	pass
 

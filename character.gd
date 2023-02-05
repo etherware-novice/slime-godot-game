@@ -4,6 +4,7 @@ signal attack(damage)
 signal endturn
 
 signal hp_update(hp, maxhp, position)
+signal died(selfc)
 
 var maxhp = 30
 var hp
@@ -51,6 +52,7 @@ func display_hp_bar(delay = null):
 	
 
 func on_death():
+	emit_signal("died", self)
 	active = false
 
 func health_display_format():

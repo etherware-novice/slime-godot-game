@@ -15,6 +15,12 @@ position = Vector2( 79, 114 )
 [node name="icecream" parent="." groups=["enemies"] instance=ExtResource( 3 )]
 position = Vector2( 426, 172 )
 
+[node name="icecream3" parent="." groups=["enemies"] instance=ExtResource( 3 )]
+position = Vector2( 607, 112 )
+
+[node name="icecream2" parent="." groups=["enemies"] instance=ExtResource( 3 )]
+position = Vector2( 543, 270 )
+
 [node name="BattleCam" type="Camera2D" parent="."]
 unique_name_in_owner = true
 position = Vector2( 319, 145 )
@@ -29,3 +35,9 @@ unique_name_in_owner = true
 [connection signal="attack" from="icecream" to="beanie" method="_on_icecream_attack"]
 [connection signal="endturn" from="icecream" to="." method="_on_icecream_endturn"]
 [connection signal="hp_update" from="icecream" to="HUD" method="_on_icecream_hp_update"]
+[connection signal="attack" from="icecream3" to="beanie" method="_on_icecream_attack"]
+[connection signal="endturn" from="icecream3" to="." method="_on_icecream_endturn"]
+[connection signal="hp_update" from="icecream3" to="HUD" method="_on_icecream_hp_update"]
+[connection signal="attack" from="icecream2" to="beanie" method="_on_icecream_attack"]
+[connection signal="endturn" from="icecream2" to="." method="_on_icecream_endturn"]
+[connection signal="hp_update" from="icecream2" to="HUD" method="_on_icecream_hp_update"]
