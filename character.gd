@@ -11,6 +11,8 @@ var ui_name = "null"
 
 var active = true
 
+var cached_damage_bar
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hp = maxhp
@@ -40,10 +42,13 @@ func _sub_hp(damage):
 	var pos = get_global_transform_with_canvas().get_origin()
 
 	hud.new_damage_num(damage, pos)
-	hud.calculate_hp_bar(hp, maxhp, pos)
 	hud.update_player_hp(health_display_format())
 	if hp <= 0:
 		on_death()
+
+func display_hp_bar(delay = null):
+	return $"%HUD".calculate_hp_bar(hp, maxhp, get_global_transform_with_canvas().get_origin(), delay)
+	
 
 func on_death():
 	active = false

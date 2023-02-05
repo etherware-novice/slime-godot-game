@@ -30,14 +30,8 @@ func _ready():
 #	if not attacking:
 #		emit_signal("attack")
 
-func _process(delta):
+func basic_attack(target):
 	var ini = position
-	
-	if not userinput:
-		return
-	if not Input.is_action_pressed("ui_right"):
-		return
-	userinput = false
 	
 	$Tween.interpolate_property(self, "position",
 		position, target.position + Vector2(-100, 0), 1,

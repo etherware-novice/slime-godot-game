@@ -54,6 +54,7 @@ func do_attack():
 
 func _sub_hp(damage):
 	._sub_hp(damage)
+	display_hp_bar(5)
 	get_node("%BattleCam").screen_shake()
 	if active:
 		$AnimatedSprite.animation = "hurt"
