@@ -19,7 +19,7 @@ TODO:
     - [x] Implementing game over
 - [x] Choosing attacks
 - [x] Multiple party members
-- [ ] Add bee hurt sprite
+- [x] Add bee hurt sprite
 - [ ] Special Attacks
 - [ ] Mid battle cutscene/textboxes
 - [ ] Action commands
@@ -30,3 +30,5 @@ TODO:
     - [ ] Fixing character scripts
         - [ ] Creating proper enemies.gd
         - [ ] Making the player/enemy scripts add to respective groups
+- [ ] Items
+- [ ] Running
