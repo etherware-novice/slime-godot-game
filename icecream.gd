@@ -1,4 +1,4 @@
-extends "res://character.gd"
+extends "res://enemies.gd"
 
 
 
@@ -11,6 +11,9 @@ func _ready():
 	maxhp = 10
 	._ready()
 
+func _sub_hp(damage):
+	._sub_hp(damage)
+	get_node("%BattleCam").screen_shake()
 
 func do_attack():	
 	var ini = position
@@ -52,25 +55,5 @@ func do_attack():
 	position = ini
 	
 	emit_signal("endturn")
-	
-
-func _sub_hp(damage):
-	._sub_hp(damage)
-	display_hp_bar(5)
-	get_node("%BattleCam").screen_shake()
-	if active:
-		$AnimatedSprite.animation = "hurt"
-		yield($AnimatedSprite, "animation_finished")
-		$AnimatedSprite.animation = "idle"
-
-func on_death():
-	.on_death()
-	$AnimatedSprite.animation = "death"
-	yield($AnimatedSprite, "animation_finished")
-	remove_from_group("enemies")
-	active = false
-	$AnimatedSprite.animation = "deathhold"
-	yield(get_tree().create_timer(5.0), "timeout")
-	queue_free()
 	
 

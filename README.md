@@ -27,8 +27,8 @@ TODO:
 - [ ] Running
 - [ ] Make battle scene loadable from main
     - [ ] Making character id lookup
-    - [ ] Fixing character scripts
-        - [ ] Creating proper enemies.gd
-        - [ ] Making the player/enemy scripts add to respective groups
+    - [x] Fixing character scripts
+        - [x] Creating proper enemies.gd
+        - [x] Making the player/enemy scripts add to respective groups
 - [ ] Items
 - [ ] Running
