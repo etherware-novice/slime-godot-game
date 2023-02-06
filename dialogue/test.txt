@@ -1,0 +1,5 @@
+BEANIE: hello world
+ICECREAM: ...what?
+BEANIE: foo
+BEANIE: this is a very long string to test how much stuff i can fit in the text box until it overflows and speeding up longer text strings hopefully i can fit some good stuff in here for story purposes of course and not just messing around with the dialog boxes i made :) i hope youre having a good day and that you have everything you need. have you drunk water? you should do that, it will make you feel better.
+ICECREAM: im gonna go
