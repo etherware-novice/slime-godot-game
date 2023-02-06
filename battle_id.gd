@@ -1,17 +1,20 @@
+const char_lookup = [
+	"res://beanie.tscn",	# 0
+	"res://tbee.tscn",		# 1
+	"res://icecream.tscn"	# 2
+]
+
+const enemy_layout_lookup = [
+	[2, 2]	# two icecreams
+]
+
 func get_char_id(id):
-	var lookup = [
-		"res://beanie.tscn",	# 0
-		"res://tbee.tscn",		# 1
-		"res://icecream.tscn"	# 2
-	]
-	if id > lookup.size() - 1:
+	if id > char_lookup.size() - 1:
 		return
-	return lookup[id]
+	return char_lookup[id]
 
 func get_enemy_layout(id):
-	var lookup = [
-		[2, 2]	# 0
-	]
-	if id > lookup.size() - 1:
+
+	if id > enemy_layout_lookup.size() - 1:
 		return
-	return lookup[id]
+	return enemy_layout_lookup[id]
