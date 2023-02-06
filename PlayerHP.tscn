@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://art/ui_buttons.png" type="Texture" id=1]
 [ext_resource path="res://art/ui_playerhpbox.png" type="Texture" id=2]
@@ -11,21 +11,25 @@ font_path = "res://fonts/Mx437_EagleSpCGA_Alt1-2y.ttf"
 [sub_resource type="DynamicFont" id=2]
 font_data = SubResource( 1 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -115,7 +119,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"points": PoolRealArray( 560, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 482, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
@@ -125,7 +129,27 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"points": PoolRealArray( 486, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 657, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("star:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 550, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("star:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 656, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 
@@ -199,7 +223,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"points": PoolRealArray( 478, -0.25, 0, 0.25, 0, 533, -0.25, 0, 0.25, 0, 492, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 482, -0.25, 0, 0.25, 0, 491, -0.25, 0, 0.25, 0, 494, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1, 2 )
 }
 tracks/7/type = "bezier"
@@ -209,7 +233,27 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"points": PoolRealArray( 657, -0.25, 0, 0.25, 0, 375, -0.25, 0, 0.25, 0, 528, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 657, -0.25, 0, 0.25, 0, 345, -0.25, 0, 0.25, 0, 528, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("star:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 550, -0.25, 0, 0.25, 0, 539, -0.25, 0, 0.25, 0, 558, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("star:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 656, -0.25, 0, 0.25, 0, 263, -0.25, 0, 0.25, 0, 528, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1, 2 )
 }
 
@@ -245,10 +289,17 @@ frame = 1
 offset = Vector2( 0, -3.6129 )
 
 [node name="run" type="AnimatedSprite" parent="."]
-position = Vector2( 560, 486 )
+position = Vector2( 482, 657 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 6 )
 frame = 2
+offset = Vector2( 0, -3.6129 )
+
+[node name="star" type="AnimatedSprite" parent="."]
+position = Vector2( 550, 656 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+frame = 3
 offset = Vector2( 0, -3.6129 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

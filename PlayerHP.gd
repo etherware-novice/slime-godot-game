@@ -7,7 +7,7 @@ extends CanvasLayer
 
 var player_inst = null
 var cur_selection = 0
-onready var default_selections = [$fight, $item, $run]
+onready var default_selections = [$fight, $item, $run, $star]
 
 var selections
 
@@ -106,11 +106,11 @@ func interpret_select():
 		update_text(player_inst.health_display_format())
 		match cur_selection:
 			0:
-				selections = get_tree().get_nodes_in_group("enemies").duplicate()  # get list of enemies
-				for x in selections:
-					menu_temp.append(x.display_hp_bar(null))
+				set_target_enemies()
 				in_sub = "fight"
-				interpret_preview()
+			3:
+				set_target_enemies()
+				in_sub = "special"
 			_:
 				update_text(str(cur_selection) + " is not implemented")
 	else:
@@ -119,7 +119,16 @@ func interpret_select():
 				var killed = selections[cur_selection]
 				player_inst.basic_attack(killed)
 				end_turn()
+			"special":
+				var killed = selections[cur_selection]
+				player_inst.basic_attack(killed)
+				end_turn()
 
 	cur_selection = 0
 
 
+func set_target_enemies():
+	selections = get_tree().get_nodes_in_group("enemies").duplicate()  # get list of enemies
+	for x in selections:
+		menu_temp.append(x.display_hp_bar(null))
+	interpret_preview()
