@@ -6,9 +6,34 @@ signal do_attack(target_pos)
 var turnorder = []
 
 
+var battle_id_lookup
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BattleCam.make_current()
+	battle_id_lookup = load("res://battle_id.gd").new()
+	set_up_senario([0, 0, 1], 0)
+
+
+func set_up_senario(party, enemy_id):
+	var loc=1
+	for x in party:
+		var character = load(battle_id_lookup.get_char_id(x))
+		character = character.instance()
+		character.position = get_node("party" + str(loc)).position
+		add_child(character)
+		character.set_owner(self)
+		loc += 1
+	
+	loc = 1
+	for x in battle_id_lookup.get_enemy_layout(enemy_id):
+		var character = load(battle_id_lookup.get_char_id(x))
+		character = character.instance()
+		character.position = get_node("enemy" + str(loc)).position
+		add_child(character)
+		character.set_owner(self)
+		loc += 1
+	
 	_regen_turn_order()
 	for x in turnorder:
 		x.connect("endturn", self, "_endturn")

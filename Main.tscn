@@ -1,27 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://beanie.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
-[ext_resource path="res://icecream.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://BattleCam.gd" type="Script" id=5]
-[ext_resource path="res://tbee.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="beanie" parent="." instance=ExtResource( 1 )]
-position = Vector2( 131, 103 )
-
-[node name="icecream" parent="." instance=ExtResource( 3 )]
-position = Vector2( 426, 172 )
-
-[node name="icecream2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 543, 270 )
-
 [node name="BattleCam" type="Camera2D" parent="."]
 unique_name_in_owner = true
-position = Vector2( 319, 145 )
+position = Vector2( 388, 209 )
 script = ExtResource( 5 )
 
 [node name="shake" type="Timer" parent="BattleCam"]
@@ -30,12 +18,23 @@ wait_time = 0.1
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 unique_name_in_owner = true
 
-[node name="tbee" parent="." instance=ExtResource( 6 )]
-position = Vector2( 110, 216 )
+[node name="party1" type="Position2D" parent="."]
+position = Vector2( 101, 150 )
 
-[connection signal="attack" from="icecream" to="beanie" method="_on_icecream_attack"]
-[connection signal="endturn" from="icecream" to="." method="_on_icecream_endturn"]
-[connection signal="hp_update" from="icecream" to="HUD" method="_on_icecream_hp_update"]
-[connection signal="attack" from="icecream2" to="beanie" method="_on_icecream_attack"]
-[connection signal="endturn" from="icecream2" to="." method="_on_icecream_endturn"]
-[connection signal="hp_update" from="icecream2" to="HUD" method="_on_icecream_hp_update"]
+[node name="party2" type="Position2D" parent="."]
+position = Vector2( 102, 276 )
+
+[node name="party3" type="Position2D" parent="."]
+position = Vector2( -15, 216 )
+
+[node name="enemy1" type="Position2D" parent="."]
+position = Vector2( 621, 226 )
+
+[node name="enemy2" type="Position2D" parent="."]
+position = Vector2( 694, 139 )
+
+[node name="enemy3" type="Position2D" parent="."]
+position = Vector2( 800, 187 )
+
+[node name="enemy4" type="Position2D" parent="."]
+position = Vector2( 737, 285 )

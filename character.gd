@@ -25,7 +25,7 @@ func _ready():
 
 func pre_turn():
 	print("preturn")
-	$"%HUD".update_player_hp(health_display_format())
+	get_node("%HUD").update_player_hp(health_display_format())
 	if active:
 		do_attack()
 
@@ -52,7 +52,7 @@ func _sub_hp(damage):
 
 
 func display_hp_bar(delay = null):
-	return $"%HUD".calculate_hp_bar(hp, maxhp, get_global_transform_with_canvas().get_origin(), delay)
+	return get_node("%HUD").calculate_hp_bar(hp, maxhp, get_global_transform_with_canvas().get_origin(), delay)
 	
 
 func on_death():
@@ -61,3 +61,5 @@ func on_death():
 
 func health_display_format():
 	return ui_name + " " + str(hp) + " / " + str(maxhp)
+
+

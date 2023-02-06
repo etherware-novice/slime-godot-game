@@ -6,4 +6,4 @@ func _ready():
 	._ready()
 
 func do_attack():
-	$"%HUD".start_user_ui(self)
+	get_node("%HUD").start_user_ui(self)
