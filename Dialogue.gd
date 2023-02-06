@@ -2,15 +2,10 @@ extends CanvasLayer
 
 signal dialog_finished_display
 signal dialog_continue
+signal dialog_close
 
 var last_speaker
 
-func _ready():
-	load_dialogue("test")
-	self.connect("dialog_continue", self, "tester")
-
-func tester():
-	print("dialog continued")
 
 func load_dialogue(name, delay=false):
 	last_speaker = null
@@ -29,8 +24,10 @@ func load_dialogue(name, delay=false):
 		yield(self, "dialog_finished_display")
 		yield(self, "dialog_continue")
 	f.close()
+	print("post dialog")
 	if delay:
 		$run_next.stop()
+	emit_signal("dialog_close")
 	$AnimationPlayer.play_backwards("start_text")  # lmao
 
 func _process(delta):

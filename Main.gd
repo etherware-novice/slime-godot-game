@@ -4,7 +4,7 @@ signal do_attack(target_pos)
 
 
 var turnorder = []
-
+var turncount = 0
 
 var battle_id_lookup
 
@@ -12,7 +12,7 @@ var battle_id_lookup
 func _ready():
 	$BattleCam.make_current()
 	battle_id_lookup = load("res://battle_id.gd").new()
-	set_up_senario([0, 0, 1], 0)
+	set_up_senario([0], 0)
 
 
 func set_up_senario(party, enemy_id):
@@ -51,6 +51,15 @@ func next_turn():
 	if _checkend():
 		return
 	var nextchar = turnorder.pop_front()
+	if turncount == 2:
+		$Dialogue.load_dialogue("test")
+		yield($Dialogue, "dialog_close")
+		yield(get_tree().create_timer(2.0), "timeout")
+		for x in get_tree().get_nodes_in_group("enemies"):
+			x._sub_hp(9999)
+		yield(get_tree().create_timer(3.0), "timeout")
+		_checkend()
+		return
 	nextchar.pre_turn()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,9 +68,9 @@ func _process(delta):
 
 
 func _regen_turn_order():
+	turncount += 1
 	turnorder += get_tree().get_nodes_in_group("party")
 	turnorder += get_tree().get_nodes_in_group("enemies")
-	
 
 func _endturn():
 	print("end turn")

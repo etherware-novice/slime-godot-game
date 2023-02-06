@@ -21,7 +21,10 @@ TODO:
 - [x] Multiple party members
 - [x] Add bee hurt sprite
 - [ ] Special Attacks
-- [ ] Mid battle cutscene/textboxes
+- [x] Mid battle cutscene/textboxes
+    - [x] Textbox logic
+    - [x] Battle triggers
+- [ ] Figure out a proper way to make senario-specific triggers!!!
 - [ ] Action commands
 - [ ] Items
 - [ ] Running

@@ -5,6 +5,7 @@ const char_lookup = [
 ]
 
 const enemy_layout_lookup = [
+	[2],	# one icecream
 	[2, 2]	# two icecreams
 ]
 

@@ -101,7 +101,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "reveal_text"
-length = 3.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("box/activeline:percent_visible")
 tracks/0/interp = 1
@@ -109,7 +109,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -121,7 +121,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0, 1.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -133,7 +133,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0, 2.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -165,7 +165,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "reveal_text_same_speaker"
-length = 3.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("box/activeline:percent_visible")
 tracks/0/interp = 1
@@ -173,7 +173,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -201,6 +201,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("box/continue:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -288,6 +300,7 @@ tracks/6/keys = {
 script = ExtResource( 4 )
 
 [node name="box" type="Node2D" parent="."]
+visible = false
 position = Vector2( 14, -19 )
 scale = Vector2( 1, 1.5 )
 
@@ -328,7 +341,6 @@ text = "NULLSPEAKER"
 position = Vector2( 880, 92.3077 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 2
 playing = true
 
 [node name="run_next" type="Timer" parent="."]
