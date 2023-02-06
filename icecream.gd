@@ -16,6 +16,7 @@ func do_attack():
 	var ini = position
 	
 	var player = get_tree().get_nodes_in_group("party").duplicate()
+	randomize()
 	player.shuffle()
 	player = player.pop_front()
 	var peak = player.position
