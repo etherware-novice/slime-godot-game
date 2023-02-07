@@ -5,7 +5,8 @@ extends CanvasLayer
 # var a = 2
 # var b = "text"
 
-var damage_num = load("res://damagenum.tscn")
+var damage_num = preload("res://damagenum.tscn")
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,23 +32,6 @@ func new_damage_num(damage, pos):
 	damage_instance.update_number(damage, pos)
 	pass # Replace with function body.
 
-
-func calculate_hp_bar(hp, maxhp, pos, delay = null):
-	var percent = min((float(hp) / float(maxhp) * 20), 19)
-	var sections = round(percent)
-	
-
-	var newbar = $e_hpbar.duplicate(0)
-	newbar.visible = true
-	newbar.frame = int(sections)
-	newbar.position = pos + Vector2(0, 50)
-	newbar.show()
-	add_child(newbar)
-	if delay:
-		yield(get_tree().create_timer(delay), "timeout")
-		newbar.queue_free()
-	else:
-		return newbar
 
 func game_over(text):
 	$transition.visible = true

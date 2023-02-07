@@ -15,8 +15,6 @@ var next_input
 var in_sub = null
 
 
-var menu_temp = []
-
 
 func _ready():
 	selections = default_selections
@@ -57,9 +55,8 @@ func end_turn():
 func top_menu():
 	if player_inst:
 		update_text(player_inst.health_display_format())
-	for x in menu_temp:
-		x.queue_free()
-	menu_temp.clear()
+	for x in get_tree().get_nodes_in_group("enemies"):
+		x.clear_hp_bar()
 		
 	in_sub = null
 	selections = default_selections
@@ -130,5 +127,5 @@ func interpret_select():
 func set_target_enemies():
 	selections = get_tree().get_nodes_in_group("enemies").duplicate()  # get list of enemies
 	for x in selections:
-		menu_temp.append(x.display_hp_bar(null))
+		x.display_hp_bar()
 	interpret_preview()

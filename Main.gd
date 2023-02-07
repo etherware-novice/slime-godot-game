@@ -14,7 +14,7 @@ var battle_id_lookup
 func _ready():
 	$BattleCam.make_current()
 	battle_id_lookup = load("res://battle_id.gd").new()
-	set_up_senario([0], 2)
+	set_up_senario([0, 1], 2)
 
 
 func set_up_senario(party, enemy_id):

@@ -14,6 +14,8 @@ var active = true
 
 var cached_damage_bar
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hp = maxhp
@@ -51,8 +53,6 @@ func _sub_hp(damage):
 	$AnimatedSprite.animation = "idle"
 
 
-func display_hp_bar(delay = null):
-	return get_node("%HUD").calculate_hp_bar(hp, maxhp, get_global_transform_with_canvas().get_origin(), delay)
 	
 
 func on_death():
