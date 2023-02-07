@@ -6,13 +6,15 @@ signal do_attack(target_pos)
 var turnorder = []
 var turncount = 0
 
+var enemy_senario
+
 var battle_id_lookup
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BattleCam.make_current()
 	battle_id_lookup = load("res://battle_id.gd").new()
-	set_up_senario([0], 0)
+	set_up_senario([0], 2)
 
 
 func set_up_senario(party, enemy_id):
@@ -34,6 +36,7 @@ func set_up_senario(party, enemy_id):
 		character.set_owner(self)
 		loc += 1
 	
+	enemy_senario = enemy_id
 	_regen_turn_order()
 	for x in turnorder:
 		x.connect("endturn", self, "_endturn")
@@ -48,18 +51,15 @@ func next_turn():
 	print(turnorder)
 	if turnorder.empty():
 		_regen_turn_order()
+	var layout_state = battle_id_lookup.get_layout_unique_data(self)
+	if layout_state is GDScriptFunctionState:  # yield workaround
+		yield(layout_state, "completed")
+	print("nextturn")
 	if _checkend():
 		return
 	var nextchar = turnorder.pop_front()
 	if turncount == 2:
-		$Dialogue.load_dialogue("test")
-		yield($Dialogue, "dialog_close")
-		yield(get_tree().create_timer(2.0), "timeout")
-		for x in get_tree().get_nodes_in_group("enemies"):
-			x._sub_hp(9999)
-		yield(get_tree().create_timer(3.0), "timeout")
-		_checkend()
-		return
+		pass
 	nextchar.pre_turn()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
