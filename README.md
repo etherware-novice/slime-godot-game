@@ -21,6 +21,9 @@ TODO:
 - [x] Multiple party members
 - [x] Add bee hurt sprite
 - [ ] Special Attacks
+    - [ ] List Selection system
+    - [ ] BP System
+    - [x] Special attack id system
 - [x] Mid battle cutscene/textboxes
     - [x] Textbox logic
     - [x] Battle triggers

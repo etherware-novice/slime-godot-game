@@ -12,9 +12,10 @@ onready var default_selections = [$fight, $item, $run, $star]
 var in_sub = null
 
 var enemylist = []
+var special_attacks = []
 
-
-func set_up(current_player):
+func set_up(current_player, atks):
+	special_attacks = atks
 	print("setup")
 	update_text(current_player)
 	$selector._end()

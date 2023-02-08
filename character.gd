@@ -77,3 +77,9 @@ func button_action_command():
 	if Input.is_action_pressed("ui_accept") && not button_pressed:
 		print("action command success")
 		return 1
+
+func get_id():
+	var battle_id_lookup = load("res://battle_id.gd").new()
+	var id = battle_id_lookup.char_lookup.find(filename)
+	if id != -1:
+		return id

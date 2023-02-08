@@ -20,8 +20,8 @@ func _process(delta):
 		pass
 
 
-func start_player_hp(init_label):
-	$PlayerHP.set_up(init_label)
+func start_player_hp(init_label, atks):
+	$PlayerHP.set_up(init_label, atks)
 
 func update_player_hp(new_label):
 	$PlayerHP.update_text(new_label)

@@ -341,6 +341,7 @@ text = "NULLSPEAKER"
 position = Vector2( 880, 92.3077 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
+frame = 1
 playing = true
 
 [node name="run_next" type="Timer" parent="."]

@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "player",
 "language": "GDScript",
 "path": "res://player.gd"
+}, {
+"base": "Node",
+"class": "specatk",
+"language": "GDScript",
+"path": "res://specialatk.gd"
 } ]
 _global_script_class_icons={
 "character": "",
 "enemy": "",
-"player": ""
+"player": "",
+"specatk": ""
 }
 
 [application]

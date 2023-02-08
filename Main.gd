@@ -14,10 +14,10 @@ var battle_id_lookup
 func _ready():
 	$BattleCam.make_current()
 	battle_id_lookup = load("res://battle_id.gd").new()
-	set_up_senario([0], 3)
+	set_up_senario([0], [1], 3)
 
 
-func set_up_senario(party, enemy_id):
+func set_up_senario(party, atks, enemy_id):
 	var loc=1
 	for x in party:
 		var character = load(battle_id_lookup.get_char_id(x))
@@ -42,7 +42,7 @@ func set_up_senario(party, enemy_id):
 		x.connect("endturn", self, "_endturn")
 		x.connect("died", self, "_clear_turn")
 	
-	$HUD.start_player_hp(turnorder[0].health_display_format())
+	$HUD.start_player_hp(turnorder[0].health_display_format(), atks)
 	next_turn()
 
 

@@ -1,11 +1,21 @@
 extends character
 
+# if set, every turn it ticks down and passes turn
+var recovery = 0
+
 class_name player
 
 func _ready():
 	add_to_group("party")
 	print("added to party")
 	._ready()
+
+func _pre_turn():
+	if recovery:
+		recovery -= 1
+		emit_signal("endturn")
+		return
+	._pre_turn()
 
 func do_attack():
 	get_node("%HUD").start_user_ui(self)
