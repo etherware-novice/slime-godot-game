@@ -9,7 +9,7 @@ func _ready():
 	._ready()
 
 func _do_attack():
-	display_hp_bar()
+	clear_hp_bar()
 	._do_attack()
 
 func _sub_hp(damage):
@@ -18,7 +18,6 @@ func _sub_hp(damage):
 
 func on_death():
 	.on_death()
-	$AnimatedSprite.animation = "death"
 	yield($AnimatedSprite, "animation_finished")
 	remove_from_group("enemies")
 	active = false

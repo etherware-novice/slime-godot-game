@@ -14,6 +14,7 @@ var selections
 var next_input
 var in_sub = null
 
+var enemylist = []
 
 
 func _ready():
@@ -46,10 +47,14 @@ func _process(delta):
 func ui_init(player):
 	player_inst = player
 	cur_selection = 0
+	for x in get_tree().get_nodes_in_group("enemies").duplicate():
+		if x.targetable:
+			enemylist.append(x)
 
 func end_turn():
 	$selector.visible = false
 	player_inst = null
+	enemylist.clear()
 	top_menu()
 
 func top_menu():
@@ -125,7 +130,7 @@ func interpret_select():
 
 
 func set_target_enemies():
-	selections = get_tree().get_nodes_in_group("enemies").duplicate()  # get list of enemies
+	selections = enemylist  # get list of enemies
 	for x in selections:
 		x.display_hp_bar()
 	interpret_preview()

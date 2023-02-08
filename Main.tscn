@@ -41,3 +41,6 @@ position = Vector2( 800, 187 )
 position = Vector2( 737, 285 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 1 )]
+
+[node name="partymid" type="Position2D" parent="."]
+position = Vector2( 54, 206 )

@@ -1,13 +1,16 @@
 const char_lookup = [
 	"res://beanie.tscn",	# 0
 	"res://tbee.tscn",		# 1
-	"res://icecream.tscn"	# 2
+	"res://icecream.tscn",	# 2
+	"res://enemybomb.tscn"	# 3
 ]
 
 const enemy_layout_lookup = [
-	[2],	# one icecream
-	[2],	# one icecream, end of second turn death cutscene
-	[2, 2]	# two icecreams
+	[2],			# 0 one icecream
+	[2],			# 1 one icecream, end of second turn death cutscene
+	[2, 2],			# 2 two icecreams
+	[2, 2, 3],		# 3 two icecreams and a bomb
+	[2, 2, 2, 3]
 ]
 
 func get_char_id(id):

@@ -33,7 +33,7 @@ func new_damage_num(damage, pos):
 	pass # Replace with function body.
 
 
-func game_over(text):
+func game_over(text = null):
 	$transition.visible = true
 	if text:
 		$gameover.text = text

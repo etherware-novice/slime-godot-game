@@ -11,6 +11,7 @@ var hp
 var ui_name = "null"
 
 var active = true
+var targetable = true
 
 var cached_damage_bar
 
@@ -57,7 +58,9 @@ func _sub_hp(damage):
 
 func on_death():
 	emit_signal("died", self)
+	$AnimatedSprite.animation = "died"
 	active = false
+	targetable = false
 
 func health_display_format():
 	return ui_name + " " + str(hp) + " / " + str(maxhp)
