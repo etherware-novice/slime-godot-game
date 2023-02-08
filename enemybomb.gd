@@ -21,7 +21,7 @@ func do_attack():
 		
 		$AnimatedSprite.animation = "explode"
 		for x in get_tree().get_nodes_in_group("party"):
-			x._sub_hp(9999)
+			x._sub_hp(9999, true)
 		yield($AnimatedSprite, "animation_finished")
 		emit_signal("endturn")
 		queue_free()

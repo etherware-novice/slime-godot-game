@@ -24,9 +24,8 @@ TODO:
 - [x] Mid battle cutscene/textboxes
     - [x] Textbox logic
     - [x] Battle triggers
-- [ ] Speed stat
-- [ ] Figure out a proper way to make senario-specific triggers!!!
-- [ ] Action commands
+- [x] Figure out a proper way to make senario-specific triggers!!!
+- [x] Action commands
 - [ ] Items
 - [ ] Running
 - [ ] Make battle scene loadable from main

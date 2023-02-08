@@ -12,6 +12,10 @@ var maxhp = 30
 var hp
 var ui_name = "null"
 
+var attack = 5
+
+var action_multiplier = 1.5
+
 var active = true
 var targetable = true
 
@@ -67,4 +71,9 @@ func on_death():
 func health_display_format():
 	return ui_name + " " + str(hp) + " / " + str(maxhp)
 
-
+func button_action_command():
+	var button_pressed = Input.is_action_pressed("ui_accept")
+	yield()  # if the accept button is pressed in this timespan :D
+	if Input.is_action_pressed("ui_accept") && not button_pressed:
+		print("action command success")
+		return 1
