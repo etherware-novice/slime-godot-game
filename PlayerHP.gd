@@ -7,9 +7,10 @@ extends CanvasLayer
 
 var player_inst = null
 onready var default_selections = [$fight, $item, $run, $star]
-
+onready var atk_index = load("res://atk_id.gd").new()
 
 var in_sub = null
+var selection
 
 var enemylist = []
 var special_attacks = []
@@ -48,12 +49,15 @@ func top_menu():
 		
 	in_sub = null
 	$selector._setup(default_selections)
+	selection = null
 
 
 
 func interpret_preview(choice):
 	match in_sub:
 		"fight":
+			update_text(enemylist[choice].health_display_format())
+		"special":
 			update_text(enemylist[choice].health_display_format())
 		null:
 			update_text(player_inst.health_display_format())
@@ -67,8 +71,11 @@ func interpret_select(choice):
 				in_sub = "fight"
 				set_target_enemies()
 			3:
-				in_sub = "special"
-				set_target_enemies()
+				in_sub = "special_menu"
+				$selectbox.visible = true
+				#$selector._setup([$selectbox/active_line])
+				selection = load(atk_index.get_atk_id(special_attacks[0])).new()
+				$selectbox/activeline.text = selection.get_name()
 			_:
 				update_text(str(choice) + " is not implemented")
 	else:
@@ -77,9 +84,13 @@ func interpret_select(choice):
 				var killed = enemylist[choice]
 				player_inst.basic_attack(killed)
 				end_turn()
+			"special_menu":
+				in_sub = "special"
+				set_target_enemies()
 			"special":
+				$selectbox.visible = false
 				var killed = enemylist[choice]
-				player_inst.basic_attack(killed)
+				player_inst.do_predef(selection, killed)
 				end_turn()
 
 

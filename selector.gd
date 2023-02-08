@@ -33,6 +33,12 @@ func _setup(targetlist):
 	cur_selection = 0
 	$input_delay.start()
 
+func _pause():
+	$input_delay.stop()
+
+func _resume():
+	$input_delay.start()
+
 func _end():
 	cur_selection = 0
 	targets = null
@@ -42,7 +48,8 @@ func _end():
 func _on_input_delay_timeout():
 	var maximum_index = targets.size() - 1
 	var selected_opt = targets[min(cur_selection, maximum_index)]
-	position = selected_opt.get_global_transform_with_canvas().get_origin() + Vector2(0, -80)
+	if selected_opt:
+		position = selected_opt.get_global_transform_with_canvas().get_origin() + Vector2(0, -80)
 	
 	match next_input:
 		"left":

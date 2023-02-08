@@ -60,7 +60,10 @@ func _sub_hp(damage):
 	$AnimatedSprite.animation = "idle"
 
 
-	
+# make this read special attack id at some poit
+func do_predef(x, target):
+	x.do_attack(target)
+	emit_signal("endturn")
 
 func on_death():
 	emit_signal("died", self)

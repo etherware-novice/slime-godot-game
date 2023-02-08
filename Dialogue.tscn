@@ -6,11 +6,11 @@
 [ext_resource path="res://Dialogue.gd" type="Script" id=4]
 [ext_resource path="res://art/ui_dialogcontinue.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=12]
 font_path = "res://fonts/Mx437_EagleSpCGA_Alt1-2y.ttf"
 
 [sub_resource type="DynamicFont" id=2]
-font_data = SubResource( 1 )
+font_data = SubResource( 12 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -341,7 +341,7 @@ text = "NULLSPEAKER"
 position = Vector2( 880, 92.3077 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="run_next" type="Timer" parent="."]

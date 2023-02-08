@@ -1,7 +1,7 @@
 extends specatk
 
-func _ready():
-	display_name = "Research"
+func get_name():
+	return "Research"
 
-func do_attack(main):
-	print(main)
+func do_attack(target):
+	print(target)

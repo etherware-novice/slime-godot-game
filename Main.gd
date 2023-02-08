@@ -8,12 +8,11 @@ var turncount = 0
 
 var enemy_senario
 
-var battle_id_lookup
+onready var battle_id_lookup = load("res://battle_id.gd").new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BattleCam.make_current()
-	battle_id_lookup = load("res://battle_id.gd").new()
 	set_up_senario([0], [1], 3)
 
 

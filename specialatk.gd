@@ -2,13 +2,15 @@ extends Node
 
 class_name specatk
 
+signal endturn
+
 # character id's needed to be active to run command
 var required=[0]
-var display_name="NULL ATK"
 var cost=0
 
-func do_attack(main):
-	pass
+func do_attack(target):
+	print("base special atk run")
+	emit_signal("endturn")
 
 
 # 0: dont display (not involved in attack)
@@ -30,3 +32,6 @@ func check_eligable(source):
 	if not temp_required.empty():
 		return 1
 	return 2
+
+func get_name():
+	return "NULL ATK"
