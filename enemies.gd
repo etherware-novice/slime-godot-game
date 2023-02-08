@@ -1,4 +1,6 @@
-extends "res://character.gd"
+extends character
+
+class_name enemy
 
 var hpbar = preload("res://hpbar.tscn")
 var cached_hpbar
@@ -8,9 +10,9 @@ func _ready():
 	print("added to enemies")
 	._ready()
 
-func _do_attack():
+func _pre_turn():
 	clear_hp_bar()
-	._do_attack()
+	._pre_turn()
 
 func _sub_hp(damage):
 	._sub_hp(damage)

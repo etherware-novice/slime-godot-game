@@ -1,4 +1,4 @@
-extends "res://enemies.gd"
+extends enemy
 
 
 

@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "character",
+"language": "GDScript",
+"path": "res://character.gd"
+}, {
+"base": "character",
+"class": "enemy",
+"language": "GDScript",
+"path": "res://enemies.gd"
+}, {
+"base": "character",
+"class": "player",
+"language": "GDScript",
+"path": "res://player.gd"
+} ]
+_global_script_class_icons={
+"character": "",
+"enemy": "",
+"player": ""
+}
+
 [application]
 
 config/name="slimegame"

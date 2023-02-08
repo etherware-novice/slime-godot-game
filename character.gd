@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name character
+
 signal attack(damage)
 signal endturn
 

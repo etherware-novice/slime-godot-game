@@ -1,4 +1,6 @@
-extends "res://character.gd"
+extends character
+
+class_name player
 
 func _ready():
 	add_to_group("party")

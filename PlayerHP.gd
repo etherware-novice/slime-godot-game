@@ -17,6 +17,7 @@ var enemylist = []
 func set_up(current_player):
 	print("setup")
 	update_text(current_player)
+	$selector._end()
 	$AnimationPlayer.play("popup")
 	yield($AnimationPlayer, "animation_finished")
 	
@@ -35,7 +36,7 @@ func ui_init(player):
 func end_turn():
 	player_inst = null
 	enemylist.clear()
-	#top_menu()
+	top_menu()
 	$selector._end()
 
 func top_menu():
