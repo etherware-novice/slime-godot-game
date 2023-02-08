@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/ui_cursor.png" type="Texture" id=1]
+[ext_resource path="res://selector.gd" type="Script" id=2]
+
+[node name="selector" type="Sprite"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="input_delay" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="input_delay" to="." method="_on_input_delay_timeout"]
