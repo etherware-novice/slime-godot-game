@@ -46,7 +46,7 @@ func _update_hp(new_hp):
 	hp = new_hp
 	emit_signal("hp_update", hp, maxhp, position)
 
-func _sub_hp(damage):
+func _sub_hp(damage, unblock = false):
 	_update_hp(hp - damage)
 	var hud = get_node("%HUD")
 	var pos = get_global_transform_with_canvas().get_origin()
@@ -82,6 +82,14 @@ func button_action_command(reverse = false):
 	if button_before and (Input.is_action_pressed("ui_accept") != reverse):
 		print("action command success")
 		return 1
+
+# helper for dealing lotsa damage at once
+func deal_damage(targets, damage, unblock=false):
+	if not targets is Array:
+		targets = [targets]
+	for x in targets:
+		x._sub_hp(damage, unblock)
+	emit_signal("attack", damage)
 
 func get_id():
 	var battle_id_lookup = load("res://battle_id.gd").new()

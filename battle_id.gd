@@ -37,6 +37,6 @@ func get_layout_unique_data(mainnode):
 			yield(dialog, "dialog_close")
 			yield(maintree.create_timer(2.0), "timeout")
 			for x in maintree.get_nodes_in_group("enemies"):
-				x._sub_hp(9999)
+				x._sub_hp(9999, true)
 			yield(maintree.create_timer(3.0), "timeout")
 			

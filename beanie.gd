@@ -30,8 +30,7 @@ func basic_attack(target):
 	yield($AnimatedSprite, "frame_changed")
 	if action.resume() == 1:
 		damageval = round(damageval * action_multiplier)
-	emit_signal("attack", damageval)
-	target._sub_hp(damageval)
+	deal_damage(target, damageval)
 	get_node("%BattleCam").screen_shake()
 	yield($AnimatedSprite, "animation_finished")
 	

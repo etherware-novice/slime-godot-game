@@ -11,8 +11,8 @@ func _ready():
 	maxhp = 10
 	._ready()
 
-func _sub_hp(damage):
-	._sub_hp(damage)
+func _sub_hp(damage, unblock = false):
+	._sub_hp(damage, unblock)
 	get_node("%BattleCam").screen_shake()
 
 func do_attack():	
@@ -46,7 +46,7 @@ func do_attack():
 	$AnimatedSprite.flip_v = false
 	$AnimatedSprite.animation = "attack_squish"
 	emit_signal("attack", 5)
-	player._sub_hp(5)
+	deal_damage(player, 5)
 	get_node("%BattleCam").screen_shake()
 	yield($AnimatedSprite, "animation_finished")
 	

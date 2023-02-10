@@ -14,8 +14,8 @@ func _pre_turn():
 	clear_hp_bar()
 	._pre_turn()
 
-func _sub_hp(damage):
-	._sub_hp(damage)
+func _sub_hp(damage, unblock = false):
+	._sub_hp(damage, unblock)
 	display_hp_bar(5)
 
 func on_death():

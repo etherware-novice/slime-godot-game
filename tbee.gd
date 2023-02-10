@@ -8,6 +8,7 @@ func _ready():
 	._ready()
 
 func basic_attack(target):
+	var dealt = attack
 	var prop = $sword
 	var screenoffset = Vector2(-100, -210)
 	
@@ -27,8 +28,7 @@ func basic_attack(target):
 	$AnimatedSprite.animation = "idle"
 	print(prop)
 	prop.visible = false
-	emit_signal("attack", 5)
-	target._sub_hp(5)
+	deal_damage(target, attack)
 	get_node("%BattleCam").screen_shake()
 	
 	emit_signal("endturn")
