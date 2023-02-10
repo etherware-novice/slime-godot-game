@@ -13,7 +13,7 @@ onready var battle_id_lookup = load("res://battle_id.gd").new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BattleCam.make_current()
-	set_up_senario([0, 1], [1], 3)
+	set_up_senario([0, 1], [0, 1], 3)
 
 
 func set_up_senario(party, atks, enemy_id):

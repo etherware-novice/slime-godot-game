@@ -57,6 +57,9 @@ func interpret_preview(choice):
 	match in_sub:
 		"fight":
 			update_text(enemylist[choice].health_display_format())
+		"special_menu":
+			selection = load(atk_index.get_atk_id(special_attacks[choice])).new()
+			$selectbox/activeline.text = selection.get_name()
 		"special":
 			update_text(enemylist[choice].health_display_format())
 		null:
@@ -73,7 +76,7 @@ func interpret_select(choice):
 			3:
 				in_sub = "special_menu"
 				$selectbox.visible = true
-				#$selector._setup([$selectbox/active_line])
+				$selector._setup($selectbox/activeline.rect_position, special_attacks.size() - 1)
 				selection = load(atk_index.get_atk_id(special_attacks[0])).new()
 				$selectbox/activeline.text = selection.get_name()
 			_:

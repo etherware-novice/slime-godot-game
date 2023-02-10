@@ -32,9 +32,9 @@ func _process(delta):
 func _setup(targetlist, maximum = 4):
 	if targetlist is Array:
 		targets = targetlist
-		lockmax = maximum
 	else:
 		lockposition = targetlist
+		lockmax = maximum
 			
 	visible = true
 	cur_selection = 0
