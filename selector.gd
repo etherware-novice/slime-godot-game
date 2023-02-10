@@ -29,7 +29,7 @@ func _process(delta):
 		next_input = "cancel"
 
 
-func _setup(targetlist, maximum = 4):
+func _setup(targetlist, rotation = 0, maximum = 4):
 	if targetlist is Array:
 		targets = targetlist
 		lockmax = 0
@@ -40,6 +40,7 @@ func _setup(targetlist, maximum = 4):
 			
 	visible = true
 	cur_selection = 0
+	rotation_degrees = rotation
 	$input_delay.start()
 
 func _pause():

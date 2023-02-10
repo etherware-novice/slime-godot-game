@@ -78,7 +78,7 @@ func interpret_select(choice):
 			3:
 				in_sub = "special_menu"
 				$selectbox.visible = true
-				$selector._setup($selectbox/activeline.rect_position, special_attacks.size() - 1)
+				$selector._setup($selectbox/activeline.rect_position + Vector2(180, -70), 0, special_attacks.size() - 1)
 				interpret_preview(0)
 			_:
 				update_text(str(choice) + " is not implemented")
