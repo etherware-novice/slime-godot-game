@@ -74,10 +74,12 @@ func on_death():
 func health_display_format():
 	return ui_name + " " + str(hp) + " / " + str(maxhp)
 
-func button_action_command():
-	var button_pressed = Input.is_action_pressed("ui_accept")
+# false for pressing at right time
+# true for releasing button at right time
+func button_action_command(reverse = false):
+	var button_before = Input.is_action_pressed("ui_accept") == reverse
 	yield()  # if the accept button is pressed in this timespan :D
-	if Input.is_action_pressed("ui_accept") && not button_pressed:
+	if button_before and (Input.is_action_pressed("ui_accept") != reverse):
 		print("action command success")
 		return 1
 
