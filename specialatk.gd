@@ -7,6 +7,8 @@ class_name specatk
 var required=[0]
 var cost=0
 var target_all = false
+# show hp when targetting
+var show_hp = true
 
 func do_attack(target):
 	print("base special atk run")

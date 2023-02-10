@@ -90,12 +90,12 @@ func interpret_select(choice):
 				end_turn()
 			"special_menu":
 				in_sub = "special"
+				$selectbox.visible = false
 				if selection.target_all:
 					pass
 				else:
-					set_target_enemies()
+					set_target_enemies(selection.show_hp)
 			"special":
-				$selectbox.visible = false
 				var killed
 				if selection.target_all:
 					killed = enemylist
@@ -105,8 +105,9 @@ func interpret_select(choice):
 				end_turn()
 
 
-func set_target_enemies():
-	for x in enemylist:
-		x.display_hp_bar()
+func set_target_enemies(hp_bar = true):
+	if hp_bar:
+		for x in enemylist:
+			x.display_hp_bar()
 	$selector._setup(enemylist, 2)
 	interpret_preview(0)
