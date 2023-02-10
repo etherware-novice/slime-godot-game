@@ -63,6 +63,7 @@ func _sub_hp(damage, unblock = false):
 # make this read special attack id at some poit
 func do_special(x, target):
 	x.do_attack(target)
+	yield(get_tree().create_timer(1), "timeout")
 	emit_signal("endturn")
 
 func on_death():

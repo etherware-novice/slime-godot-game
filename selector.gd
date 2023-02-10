@@ -32,6 +32,8 @@ func _process(delta):
 func _setup(targetlist, maximum = 4):
 	if targetlist is Array:
 		targets = targetlist
+		lockmax = 0
+		lockposition = null
 	else:
 		lockposition = targetlist
 		lockmax = maximum

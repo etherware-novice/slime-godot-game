@@ -2,7 +2,6 @@ extends Node
 
 class_name specatk
 
-signal endturn
 
 # character id's needed to be active to run command
 var required=[0]
@@ -11,7 +10,6 @@ var target_all = false
 
 func do_attack(target):
 	print("base special atk run")
-	emit_signal("endturn")
 
 
 # 0: dont display (not involved in attack)

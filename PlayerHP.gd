@@ -30,9 +30,11 @@ func update_text(new_label):
 
 func ui_init(player):
 	player_inst = player
+	enemylist.clear()
 	for x in get_tree().get_nodes_in_group("enemies").duplicate():
 		if x.targetable:
 			enemylist.append(x)
+	$selector.visible = true
 	$selector._setup(default_selections)
 
 func end_turn():
@@ -77,8 +79,7 @@ func interpret_select(choice):
 				in_sub = "special_menu"
 				$selectbox.visible = true
 				$selector._setup($selectbox/activeline.rect_position, special_attacks.size() - 1)
-				selection = load(atk_index.get_atk_id(special_attacks[0])).new()
-				$selectbox/activeline.text = selection.get_name()
+				interpret_preview(0)
 			_:
 				update_text(str(choice) + " is not implemented")
 	else:
@@ -107,5 +108,5 @@ func interpret_select(choice):
 func set_target_enemies():
 	for x in enemylist:
 		x.display_hp_bar()
-	$selector._setup(enemylist)
+	$selector._setup(enemylist, 2)
 	interpret_preview(0)

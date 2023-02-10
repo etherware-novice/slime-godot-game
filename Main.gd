@@ -61,10 +61,6 @@ func next_turn():
 		pass
 	nextchar.pre_turn()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _regen_turn_order():
 	turncount += 1
