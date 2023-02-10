@@ -10,7 +10,7 @@ var target_all = false
 # show hp when targetting
 var show_hp = true
 
-func do_attack(target):
+func do_attack(user, target):
 	print("base special atk run")
 
 

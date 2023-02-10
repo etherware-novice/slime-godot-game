@@ -62,7 +62,7 @@ func _sub_hp(damage, unblock = false):
 
 # make this read special attack id at some poit
 func do_special(x, target):
-	var layout_state = x.do_attack(target)
+	var layout_state = x.do_attack(self, target)
 	if layout_state is GDScriptFunctionState:  # yield workaround
 		yield(layout_state, "completed")
 	yield(get_tree().create_timer(1), "timeout")
