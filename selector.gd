@@ -8,6 +8,8 @@ var next_input
 var targets
 var cur_selection
 
+var lockposition
+var lockmax 
 
 func _ready():
 	_end()
@@ -27,8 +29,13 @@ func _process(delta):
 		next_input = "cancel"
 
 
-func _setup(targetlist):
-	targets = targetlist
+func _setup(targetlist, maximum = 4):
+	if targetlist is Array:
+		targets = targetlist
+		lockmax = maximum
+	else:
+		lockposition = targetlist
+			
 	visible = true
 	cur_selection = 0
 	$input_delay.start()
@@ -41,15 +48,22 @@ func _resume():
 
 func _end():
 	cur_selection = 0
+	lockmax = 0
 	targets = null
+	lockposition = null
 	visible = false
 	$input_delay.stop()
 
 func _on_input_delay_timeout():
-	var maximum_index = targets.size() - 1
-	var selected_opt = targets[min(cur_selection, maximum_index)]
-	if selected_opt:
-		position = selected_opt.get_global_transform_with_canvas().get_origin() + Vector2(0, -80)
+	var maximum_index
+	if lockposition:
+		position = lockposition
+		maximum_index = lockmax
+	else:
+		maximum_index = targets.size() - 1
+		var selected_opt = targets[min(cur_selection, maximum_index)]
+		if selected_opt:
+			position = selected_opt.get_global_transform_with_canvas().get_origin() + Vector2(0, -80)
 	
 	match next_input:
 		"left":
