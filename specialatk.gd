@@ -7,6 +7,7 @@ signal endturn
 # character id's needed to be active to run command
 var required=[0]
 var cost=0
+var target_all = false
 
 func do_attack(target):
 	print("base special atk run")

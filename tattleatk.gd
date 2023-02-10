@@ -4,4 +4,4 @@ func get_name():
 	return "Research"
 
 func do_attack(target):
-	print(target)
+	print("target researched")

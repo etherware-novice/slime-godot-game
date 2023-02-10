@@ -89,11 +89,18 @@ func interpret_select(choice):
 				end_turn()
 			"special_menu":
 				in_sub = "special"
-				set_target_enemies()
+				if selection.target_all:
+					pass
+				else:
+					set_target_enemies()
 			"special":
 				$selectbox.visible = false
-				var killed = enemylist[choice]
-				player_inst.do_predef(selection, killed)
+				var killed
+				if selection.target_all:
+					killed = enemylist
+				else:
+					killed = enemylist[choice]
+				player_inst.do_special(selection, killed)
 				end_turn()
 
 

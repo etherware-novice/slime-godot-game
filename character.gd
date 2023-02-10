@@ -61,7 +61,7 @@ func _sub_hp(damage, unblock = false):
 
 
 # make this read special attack id at some poit
-func do_predef(x, target):
+func do_special(x, target):
 	x.do_attack(target)
 	emit_signal("endturn")
 
